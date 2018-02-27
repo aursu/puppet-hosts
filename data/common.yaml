@@ -1,1 +1,15 @@
---- {}
+---
+hosts::hosts:
+    localhost:
+        ensure: present
+        host_aliases:
+            - localhost.localdomain
+            - localhost4
+            - localhost4.localdomain4
+        ip: 127.0.0.1
+hosts::aliases: []
+hosts::exported: true
+hosts::collect_external: true
+hosts::collect_tag: exported
+hosts::exported_aliases: false
+hosts::manage_local: true
