@@ -7,7 +7,7 @@
 # @example
 #   include hosts
 class hosts {
-    Hosts::HostResource
+    Hosts::HostResources
             $hosts,
     Array[String]
             $aliases,
@@ -17,7 +17,7 @@ class hosts {
     Boolean $exported_aliases,
     Boolean $manage_local,
     # add ability to override predefined in params hash
-    Hosts::HostResource
+    Hosts::HostResources
             $hosts_local = $hosts::params::hosts_local,
 ) inherits hosts::params
 {
@@ -74,7 +74,7 @@ class hosts {
 
     # look for hosts in Hiera using hash merge behavior, if not found
     # use already resolved $hosts parameter or its predefined value   
-    $nodes = lookup('hosts::hosts', Hosts::HostResource, 'hash', $hosts)
+    $nodes = lookup('hosts::hosts', Hosts::HostResources, 'hash', $hosts)
 
     # if manage_local flag set - define also "host" resource for loopback records
     if $manage_local {

@@ -1,4 +1,4 @@
-type Hosts::HostResource = Hash[
+type Hosts::HostResources = Hash[
     String,
     Struct[{
         ip                      => String,
