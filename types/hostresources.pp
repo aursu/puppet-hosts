@@ -9,6 +9,5 @@ type Hosts::HostResources = Hash[
             Array[String]
         ],
         Optional[target]        => String,
-    }],
-    1
+    }]
 ]

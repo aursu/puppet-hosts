@@ -7,7 +7,7 @@
 # @example
 #   include hosts
 class hosts (
-    Optional[Hosts::HostResources]
+    Hosts::HostResources
             $hosts,
     Array[String]
             $aliases,
@@ -75,19 +75,14 @@ class hosts (
 
     # look for hosts in Hiera using hash merge behavior, if not found
     # use already resolved $hosts parameter or its predefined value   
-    $nodes = lookup('hosts::hosts', Optional[Hosts::HostResources], 'hash', $hosts)
+    $nodes = lookup('hosts::hosts', Hosts::HostResources, 'hash', $hosts)
 
     # if manage_local flag set - define also "host" resource for loopback records
-    if $nodes {
-        if $manage_local {
-            $_nodes = $nodes + $hosts_local
-        }
-        else {
-            $_nodes = $nodes
-        }
+    if $manage_local {
+        $_nodes = $nodes + $hosts_local
     }
     else {
-        $_nodes = {}
+        $_nodes = $nodes
     }
 
     $_nodes.each | String $h, $attributes | {
