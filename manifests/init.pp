@@ -37,7 +37,7 @@ class hosts (
     $_aliases = $aliases - [ $::hostname ]
 
     # if domain name available - use it in conjuction with hostname
-    if $::domain and "${::hostname}.${::domain}" != "${::fqdn}" {
+    if $::domain and "${::hostname}.${::domain}" != $::fqdn {
         $_aliases_domain = [ "${::hostname}.${::domain}" ]
     }
     else {
