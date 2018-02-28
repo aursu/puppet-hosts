@@ -85,7 +85,7 @@ class hosts (
     }
 
     $_nodes.each | String $h, $attributes | {
-        node {
+        host {
             $h: * => $attributes;
             default: * => {
                 ensure  => 'present',
