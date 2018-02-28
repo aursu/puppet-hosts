@@ -9,7 +9,7 @@ hosts::hosts:
         ip: 127.0.0.1
 hosts::aliases: []
 hosts::exported: true
-hosts::collect_external: true
+hosts::collect_external: false
 hosts::collect_tag: exported
 hosts::exported_aliases: false
 hosts::manage_local: true
