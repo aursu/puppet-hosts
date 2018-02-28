@@ -16,10 +16,10 @@ class hosts (
     String  $collect_tag,
     Boolean $exported_aliases,
     Boolean $manage_local,
+    Boolean $own_record,
     # add ability to override predefined in params hash
     Hosts::HostResources
             $hosts_local = $hosts::params::hosts_local,
-    Boolean $own_record,
 ) inherits hosts::params
 {
     # we use external IP address for default record
