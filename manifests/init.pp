@@ -19,6 +19,7 @@ class hosts (
     # add ability to override predefined in params hash
     Hosts::HostResources
             $hosts_local = $hosts::params::hosts_local,
+    Boolean $own_record,
 ) inherits hosts::params
 {
     # we use external IP address for default record
@@ -64,7 +65,7 @@ class hosts (
             tag          => $collect_tag,
         }
     }
-    else {
+    elsif $own_record {
         host { $_hostname:
             ensure       => 'present',
             ip           => $::ipaddress,
@@ -99,7 +100,7 @@ class hosts (
     }
     # otherwise - collect only self-exported
     else {
-        Host <<| title == $::hostname |>>
+        Host <<| title == $::fqdn or title == $::hostname |>>
     }
 
     # we should add aliases separately (as they was not exported/collected)
