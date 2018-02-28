@@ -6,7 +6,7 @@
 #
 # @example
 #   include hosts
-class hosts {
+class hosts (
     Hosts::HostResources
             $hosts,
     Array[String]
